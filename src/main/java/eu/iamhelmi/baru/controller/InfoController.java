@@ -4,6 +4,7 @@ import java.io.File;
 import java.nio.charset.Charset;
 
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 @CrossOrigin
 public class InfoController {
 	
+	@Value("${app.dump.file:/storage/dump}")
+	private String dump;
+	
 	@GetMapping ("/info")
     public ResponseEntity<String> getInfo(){
 		
@@ -30,10 +34,10 @@ public class InfoController {
 	@PostMapping(path= "/upload", consumes = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> addEmployee(@RequestParam String fileName, @RequestBody String s) throws Exception 
 	{       
-		log.info("fileName: {}", fileName);
 		log.info(s);
-		String folder = "/storage/dump";
-		FileUtils.write(new File(folder+File.separatorChar+fileName), s, Charset.defaultCharset());
+		log.info("REST Body will be stored to folder {} filename: {}", dump, fileName);
+		//String folder = "/storage/dump";
+		FileUtils.write(new File(dump+File.separatorChar+fileName), s, Charset.defaultCharset());
 
     return new ResponseEntity<String> ("info",HttpStatus.OK);
 	}

@@ -37,3 +37,9 @@ info:
     name: testApp
     version: '@project.version@'
 
+app:
+  uri:
+    base: http://localhost:5657
+    
+  dump:
+    file: /storage/dump
