@@ -1,0 +1,39 @@
+spring:
+
+  application:
+    name: baru
+
+#  datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:33306/dashboard
+#    password: GadoGado
+#    username: dashboard
+#  jpa:
+#    open-in-view: false
+#  flyway:
+#    locations: classpath:db/migration/model,classpath:db/migration/data
+#    #baseline-on-migrate: true
+#    baselineOnMigrate: true
+
+management:
+  security:
+    enabled: false
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    
+server:
+  port: 5657
+
+
+info:
+  application:
+    build-number: '@build.number@'
+    description: Application for retrieving data.
+    name: testApp
+    version: '@project.version@'
+
