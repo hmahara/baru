@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 public class BaruUtility {
 	private static String URI_BASE;
 	
+	
+	
 	@Value("${app.uri.base}")
 	public void setStaticName(String name) {
 		URI_BASE = name;

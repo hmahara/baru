@@ -29,6 +29,13 @@ management:
 server:
   port: 5657
 
+logging:
+  file.name: logs/baru.log
+  level:
+    org.springframework.web: ERROR
+    eu.iamhelmi.baru: INFO
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
 info:
   application:

@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class FileDetectedProcessor implements Processor{
 
 	
-	String uriBase = "http://localhost:5657";
+	String uriBase = "http://localhost:5657/api/v1";
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		log.info("Test property: {}", BaruUtility.getUriBase());
@@ -28,7 +28,7 @@ public class FileDetectedProcessor implements Processor{
 		log.info("Object: {}", v.getFileName());
 		RestClient restClient = RestClient.create();
 		ResponseEntity<Void> response = restClient.post()
-				  .uri(uriBase + "/upload?fileName="+v.getFileName())
+				  .uri(uriBase + "/file?fileName="+v.getFileName())
 				  .contentType(MediaType.TEXT_PLAIN)
 				  .body(exchange.getMessage().getBody(String.class))
 				  .retrieve()

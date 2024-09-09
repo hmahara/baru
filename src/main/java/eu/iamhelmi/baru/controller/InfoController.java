@@ -1,5 +1,7 @@
 package eu.iamhelmi.baru.controller;
 
+
+
 import java.io.File;
 import java.nio.charset.Charset;
 
@@ -12,15 +14,19 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
 @CrossOrigin
+@RequestMapping( "/api/v1")
 public class InfoController {
+	public static final String BASE_API = "/api/v1";
 	
 	@Value("${app.dump.file:/storage/dump}")
 	private String dump;
@@ -31,7 +37,7 @@ public class InfoController {
         return new ResponseEntity<String> ("info",HttpStatus.OK);
     }
 	
-	@PostMapping(path= "/upload", consumes = MediaType.TEXT_PLAIN_VALUE)
+	@PostMapping(path= "/file", consumes = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> addEmployee(@RequestParam String fileName, @RequestBody String s) throws Exception 
 	{       
 		log.info(s);
