@@ -1,4 +1,4 @@
-package eu.iamhelmi.baru.component;
+package eu.iamhelmi.baru.processor;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -26,13 +26,13 @@ public class FileDetectedProcessor implements Processor{
 		log.info("Processor is processing {}", exchange.getMessage().getBody(String.class));
 		GenericFile v =  (GenericFile) exchange.getProperty("CamelFileExchangeFile");
 		log.info("Object: {}", v.getFileName());
-		RestClient restClient = RestClient.create();
-		ResponseEntity<Void> response = restClient.post()
-				  .uri(uriBase + "/file?fileName="+v.getFileName())
-				  .contentType(MediaType.TEXT_PLAIN)
-				  .body(exchange.getMessage().getBody(String.class))
-				  .retrieve()
-				  .toBodilessEntity();
+//		RestClient restClient = RestClient.create();
+//		ResponseEntity<Void> response = restClient.post()
+//				  .uri(uriBase + "/file?fileName="+v.getFileName())
+//				  .contentType(MediaType.TEXT_PLAIN)
+//				  .body(exchange.getMessage().getBody(String.class))
+//				  .retrieve()
+//				  .toBodilessEntity();
 		
 	}
 

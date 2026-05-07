@@ -1,14 +1,10 @@
-package eu.iamhelmi.baru.component;
-
-
+package eu.iamhelmi.baru.route;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import eu.iamhelmi.baru.processor.FileDetectedProcessor;
 import lombok.extern.slf4j.Slf4j;
 
 @Component
@@ -21,7 +17,7 @@ public class FileRouting extends RouteBuilder {
 	
 	@Override
 	public void configure() throws Exception {
-	from("file:/lincsafe/workspace/multitenancy/frontend/src?recursive=true")
+	from("file:/tmp/weekend?recursive=true")
 	.log(" Process Started ").log("${body}") 
 	.process(new FileDetectedProcessor())
 	//.to("file:/tmp/sat/out")
